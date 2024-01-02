@@ -1,0 +1,86 @@
+@import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0');
+
+.Search-container{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content:space-around;
+    flex-wrap: wrap;
+    margin-top: 0rem;
+    background-color: rgb(222, 222, 222);
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    border-left: none !important;
+    border-right: none !important;
+    .Search_left{
+        width: 50%;
+        min-width: 300px !important;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        input{
+            margin: auto 1rem;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            padding-left: 15px;
+            border: none;
+            outline: none !important;
+            width: 40%;
+            border-bottom: #000000 2px solid;
+            color: #000000;
+            background-color: transparent;
+            letter-spacing: 2px;
+            
+            &::placeholder {
+                color: rgb(0, 0, 0); /* Set the desired color */
+              }
+        }
+        button{
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            width: 100px;
+            padding: 5px 10px;
+            font-size: 100%;
+            color: #ffffff;
+            background-color: #000000;
+            border: none;
+            cursor: pointer;
+            letter-spacing: 2px;
+            &:hover{
+                background-color: #505050;
+            }
+        }
+    }
+    .Search_right{
+        width: 50%;
+        min-width: 300px !important;
+        display: flex;
+        align-items: center;
+        justify-content: left;
+        span{
+            color: #000000;
+            margin: auto 1rem;
+            font-size: 2rem !important;
+            cursor: pointer;
+        }
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .Search-container{
+        flex-direction: column !important;
+        .Search_left{
+            width: 100% !important;
+            justify-content: space-around !important;
+            margin-top: 2rem !important;
+            button{
+                margin-right: 1rem !important;
+            }
+        }
+        .Search_right{
+            width: 100% !important;
+            justify-content: space-around !important;
+        }
+    }
+}

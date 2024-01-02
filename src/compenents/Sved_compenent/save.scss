@@ -1,0 +1,110 @@
+@import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0');
+
+.Like_titel{
+    color: #075d5a;
+    letter-spacing: 2px;
+    font-weight: 400;
+    font-family: 'Chakra Petch', sans-serif;
+    width: 100%;
+    text-align: center;
+    margin-top: 2rem;
+}
+.container {
+	column-width: 400px;
+    width: 99.5%;
+    margin-top: 2rem;
+    margin-left: 0.5%;
+    .card {
+        width: 90%;
+        min-width: 300px !important;
+        justify-content: space-around;
+        align-items: center;
+        flex-direction: column;
+        padding: 1rem;
+        background-color: var(--bg);
+        color: var(--fg);
+        margin: 0.5rem auto;
+        border-radius: 1rem;
+        display: inline-block;
+        .photo {
+            .download{
+                border: none;
+                background-color: #075d5a79;
+                color: #fff;
+                position: absolute;
+                margin: 1rem;
+                padding: 1rem;
+                border-radius: 0.5rem;
+                cursor: pointer;
+            }
+            img {
+                border-radius: 1rem;
+                width: 100%;
+                height: auto !important;
+            }
+            .delete{
+                border: none;
+                background-color: #075d5a79;
+                color: #fff;
+                position: absolute;
+                left: 50%;
+                margin: 1rem;
+                padding: 1rem;
+                border-radius: 0.5rem;
+                cursor: pointer;
+            }
+        }
+
+        .content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            margin: 0.5rem auto;
+            .user {
+                display: flex;
+                align-items: center;
+                justify-content: space-around;
+
+                .user_img {
+                    width: 40px;
+                    height: 40px;
+                    border-radius: 50%;
+                }
+
+                .user_name {
+                    color: var(--fg);
+                    letter-spacing: 2px;
+                    margin-left: 0.5rem;
+                }
+            }
+
+            .details {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                width: 40%;
+                color: var(--fg);
+
+                .likes,
+                .favorites {
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    width: 25%;
+                    span {
+                        margin-right: 0.5rem;
+                        cursor: pointer;
+                    }
+                }
+
+                .favorites {
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    width: 40%;
+                }
+            }
+        }
+    }
+}
