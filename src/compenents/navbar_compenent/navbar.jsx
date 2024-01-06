@@ -21,6 +21,8 @@ const Nav = ({ User, chngeKey }) => {
     chngeKey(keyword);
   };
 
+  console.log(User)
+
   return (
     <>
       <div className="navbar">
@@ -32,7 +34,7 @@ const Nav = ({ User, chngeKey }) => {
               onChange={handleChange}
               placeholder="Enter Keyword ..."
             />
-            <button onClick={handleSearch }>
+            <button onClick={handleSearch}>
               {' '}
               <span
                 className="material-symbols-outlined"
@@ -44,9 +46,16 @@ const Nav = ({ User, chngeKey }) => {
           </div>
           <div className="fav">
             <div className="fav_cont">
-              <Link to='/'><span class="material-symbols-outlined">home</span></Link> 
-              <Link to='/Saved'><span className="material-symbols-outlined">bookmark</span></Link>
-              <Link to='/Liked'><span className="material-symbols-outlined">favorite</span></Link> 
+              <Link to='/'><span class="material-symbols-outlined">home</span></Link>
+              {User ?
+                <>
+
+                  <Link to={`/Saved/${User.uid}`}><span className="material-symbols-outlined">bookmark</span></Link>
+                  <Link to={`/Liked/${User.uid}`}><span className="material-symbols-outlined">favorite</span></Link>
+                </>
+                :
+                <></>
+              }
             </div>
           </div>
         </div>
@@ -63,7 +72,15 @@ const Nav = ({ User, chngeKey }) => {
                 />
                 {show ? (
                   <div className="dropdown">
-                    <button onClick={() => auth.signOut()}>
+                    <button onClick={() => {
+                      auth.signOut()
+                        .then(() => {
+                          window.location = '/';
+                        })
+                        .catch((error) => {
+                          console.error('Error signing out:', error);
+                        });
+                    }}>
                       Logout
                       <span className="material-symbols-outlined">logout</span>
                     </button>

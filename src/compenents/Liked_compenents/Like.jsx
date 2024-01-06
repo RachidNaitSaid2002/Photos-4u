@@ -1,12 +1,12 @@
 import './Like.scss';
 import React, { useState, useEffect } from 'react';
-import { addPh, delPh } from '../../Liked';
-import { addPh_S,delPh_S } from '../../Sved';
+import { delPh } from '../../Liked';
+import { addPh_S } from '../../Sved';
 import { useSelector, useDispatch } from 'react-redux';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-const Liked_Ph = () => {
+const Liked_Ph = ({ User }) => {
     const [photos, setPhotos] = useState([]);
     const Ph = useSelector((state) => state.favorit);
     const Sv = useSelector(sv => sv.Save);
@@ -15,16 +15,16 @@ const Liked_Ph = () => {
     const handleLike_Sup = (id) => {
         dispatch(delPh(id));
         toast.warning('Liked Photo deleted')
-    }
+    };
 
     const handleSave = (id) => {
         const isIdExists = Sv.some((item) => item === id);
         if (!isIdExists) {
-          dispatch(addPh_S(id));
-          toast.success('You Saved an Picture');
-          console.log("Sv :", Sv);
+            dispatch(addPh_S(id));
+            toast.success('You Saved an Picture');
+            console.log("Sv :", Sv);
         }
-      };
+    };
 
     useEffect(() => {
         const fetchPhotos = async () => {
@@ -50,18 +50,18 @@ const Liked_Ph = () => {
     console.log(photos)
 
     const downloadFile = (path) => {
-        const url = path; 
+        const url = path;
         fetch(url)
-          .then(response => response.blob())
-          .then(blob => {
-            const downloadUrl = URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.href = downloadUrl;
-            a.download = 'filename'; 
-            a.click();
-            URL.revokeObjectURL(downloadUrl);
-          });
-      }
+            .then(response => response.blob())
+            .then(blob => {
+                const downloadUrl = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = downloadUrl;
+                a.download = 'filename';
+                a.click();
+                URL.revokeObjectURL(downloadUrl);
+            });
+    }
 
     return (
         <>
@@ -70,11 +70,11 @@ const Liked_Ph = () => {
                 {photos.map((item, index) => (
                     <div class="card">
                         <div class="photo">
-                                <button className='download' onClick={() => downloadFile(item.urls.raw)}>
-                                    <span class="material-symbols-outlined" >
-                                        download
-                                    </span>
-                                </button>
+                            <button className='download' onClick={() => downloadFile(item.urls.raw)}>
+                                <span class="material-symbols-outlined" >
+                                    download
+                                </span>
+                            </button>
                             <img src={item.urls.regular} alt={item.description} />
                         </div>
                         <div class="content">
@@ -87,16 +87,18 @@ const Liked_Ph = () => {
                                     <span class="material-symbols-outlined">thumb_up</span>
                                     {item.likes}
                                 </div>
-                                <div class="favorites">
-                                    <span class="material-symbols-outlined" onClick={()=> handleSave(item.id)}>bookmark</span>
-                                    <span class="material-symbols-outlined" onClick={()=> handleLike_Sup(item.id)}>delete</span>
-                                </div>
+                                {User ? <>
+                                    <div class="favorites">
+                                        <span class="material-symbols-outlined" onClick={() => handleSave(item.id)}>bookmark</span>
+                                        <span class="material-symbols-outlined" onClick={() => handleLike_Sup(item.id)}>delete</span>
+                                    </div></> :
+                                    <></>}
                             </div>
                         </div>
                     </div>
                 ))}
 
-<ToastContainer />
+                <ToastContainer />
             </div>
         </>
     );

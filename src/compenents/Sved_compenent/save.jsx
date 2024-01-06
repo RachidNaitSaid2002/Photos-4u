@@ -6,7 +6,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-const Save_Ph = () => {
+const Save_Ph = ({User}) => {
     const [photos, setPhotos] = useState([]);
     const Sv = useSelector(sv => sv.Save);
     const Ph = useSelector((state) => state.favorit);
@@ -86,10 +86,11 @@ const Save_Ph = () => {
                                     <span class="material-symbols-outlined">thumb_up</span>
                                     {item.likes}
                                 </div>
+                                {User ? <>
                                 <div class="favorites">
                                     <span class="material-symbols-outlined" onClick={() => handleLike(item.id)}>favorite</span>
                                     <span class="material-symbols-outlined" onClick={() => handlesave_sup(item.id)}>delete</span>
-                                </div>
+                                </div></> :<></> }
                             </div>
                         </div>
                     </div>

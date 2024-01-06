@@ -45,8 +45,13 @@ function App() {
         <Nav User={user} chngeKey={onChangeKeyword} />
         <Routes>
           <Route path="/" element={<TopH keyword={keyword} User={user} />} />
-          <Route path="/Liked" element={<Liked_Ph />} />
-          <Route path='/Saved' element={<Save_Ph />} />
+          {user ?(
+            <>
+              <Route path={`/Liked/${user.uid}`} element={<Liked_Ph User={user}/>} />
+              <Route path={`/Saved/${user.uid}`} element={<Save_Ph User={user}/>} />
+            </>
+          )
+        :<></>}
         </Routes>
       </Router>
     </>

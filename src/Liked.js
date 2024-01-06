@@ -2,13 +2,13 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const favSlice = createSlice({
   name: "favorit",
-  initialState: [], // Define the initial state here
+  initialState: [],
   reducers: {
     addPh: (state, action) => {
       state.push(action.payload);
     },
     delPh: (state, action) => {
-      const index = state.findIndex((item) => item.id === action.payload);
+      const index = state.findIndex((item) => item === action.payload);
       if (index !== -1) {
         state.splice(index, 1);
       }

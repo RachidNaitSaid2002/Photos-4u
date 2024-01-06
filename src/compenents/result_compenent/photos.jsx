@@ -117,10 +117,13 @@ const TopH = ({ keyword,User }) => {
                       <span class="material-symbols-outlined">thumb_up</span>
                       {item.likes}
                     </div>
+                    {User ? <>
                     <div class="favorites">
                       <span class="material-symbols-outlined" onClick={() => handleLike(item.id)}>favorite</span>
                       <span class="material-symbols-outlined" onClick={()=> handleSave(item.id) }>bookmark</span>
                     </div>
+                    </>:<>
+                    </>}
                   </div>
                 </div>
               </div>
